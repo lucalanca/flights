@@ -2,6 +2,16 @@ import React, { Component, PropTypes } from 'react'
 import Geosuggest from 'react-geosuggest';
 import { locationModel } from '../models/location';
 
+import AIRPORTS from '../models/airports';
+
+const AIRPORTS_FIXTURES = AIRPORTS.map(a => ({
+	label: `${a.city}, ${a.country}`,
+	location: {
+		lat: a.lat,
+		lng: a.lng
+	}
+}))
+
 const currentLocationToFixtures = (currentLocation) => {
 	if (!currentLocation) {
 		return [];
@@ -39,12 +49,12 @@ export default class FormLocationStart extends Component {
 
   render() {
 	const { currentLocation } = this.props;
-	const fixtures = currentLocationToFixtures(currentLocation);
+	// const fixtures = currentLocationToFixtures(currentLocation);
     return (
       <div>
         <p>Type your location and hit 'Go':</p>
 		<Geosuggest onSuggestSelect={this.onSuggestSelect.bind(this)}
-		            fixtures={fixtures}
+		            fixtures={AIRPORTS_FIXTURES}
 					types={['(cities)']}/>
 
 		{currentLocation && <pre>

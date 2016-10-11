@@ -1,0 +1,14 @@
+.input-autocomplete {
+	background: red;
+	display: inline-block;
+	width: 100%;
+	> div:first-child {
+		width: 100%;
+		display: inline-block;
+	}
+
+	input {
+		display: inline-block;
+		width: 100%;
+	}
+}

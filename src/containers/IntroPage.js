@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import FormLocationStart from '../components/FormLocationStart'
-import { setLocationStart } from '../actions/location';
+import { setLocationStart, setLocationFinish } from '../actions/location';
 import { locationModel } from '../models/location';
+
+import InputAirport from '../components/InputAirport';
 
 class IntroPage extends Component {
   static propTypes = {
@@ -14,11 +16,15 @@ class IntroPage extends Component {
   }
 
   render() {
-    const { setLocationStart, currentLocation } = this.props
+    const { setLocationStart, setLocationFinish, currentLocation } = this.props
     return (
       <div>
-        <FormLocationStart currentLocation={currentLocation}
-                           onChange={(location) => setLocationStart(location)} />
+         <div style={{width: '300px', display: 'inline-block'}}>
+             <InputAirport onChange={location => setLocationStart(location)}/>
+         </div>
+         <div style={{width: '500px', marginLeft: '16px', display: 'inline-block'}}>
+             <InputAirport onChange={location => setLocationFinish(location)}/>
+         </div>
       </div>
     )
   }
